@@ -1,0 +1,136 @@
+/* ==================================================
+   🔥 EXPLORE PAGE CSS (LAYOUT & PRO ANIMATIONS) 🔥
+================================================== */
+
+/* SCROLL INDICATOR ANIMATION */
+.scroll-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px 0 60px 0; }
+.mouse-icon { width: 30px; height: 50px; border: 2px solid var(--purple, #a855f7); border-radius: 20px; position: relative; box-shadow: 0 0 15px rgba(192, 132, 252, 0.3); }
+.wheel { width: 4px; height: 8px; background: var(--yellow, #fbbf24); border-radius: 4px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scrollBounce 2s infinite cubic-bezier(0.15, 0.41, 0.69, 0.94); box-shadow: 0 0 10px var(--yellow, #fbbf24); }
+@keyframes scrollBounce { 0% { opacity: 1; transform: translate(-50%, 0); } 50% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 0; transform: translate(-50%, 0); } }
+.scroll-text { font-size: 11px; color: var(--purple, #a855f7); margin-top: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; animation: pulseText 2s infinite; }
+@keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* GLOBAL TOUCH/CLICK ANIMATION (Feels like pressing a real button) */
+.touch-anim { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease; cursor: pointer; }
+.touch-anim:active { transform: scale(0.95) translateY(2px) !important; box-shadow: 0 0 10px rgba(192, 132, 252, 0.8) !important; }
+
+/* REVEAL ON SCROLL */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* THE VISION SECTION */
+.vision-section { text-align: center; max-width: 800px; margin: 0 auto 80px auto; padding: 0 5%; }
+.page-main-title { font-size: clamp(30px, 5vw, 50px); font-weight: 900; letter-spacing: 2px; margin-bottom: 20px; color: #fff; }
+.page-main-title .highlight { 
+    background: linear-gradient(90deg, var(--purple, #a855f7), var(--yellow, #fbbf24)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    animation: neonPulse 2s infinite alternate; 
+}
+
+@keyframes neonPulse {
+    0% { filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.4)); }
+    100% { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.9)); }
+}
+
+.vision-desc { font-size: 16px; color: #a1a1aa; line-height: 1.8; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.vision-desc strong { color: #fff; font-weight: 800; display: block; margin-top: 15px; }
+
+/* THE JOURNEY TIMELINE (Blocky Icon Style) */
+.journey-section { max-width: 900px; margin: 0 auto 100px auto; padding: 0 5%; position: relative; }
+.timeline-container { position: relative; padding-left: 50px; }
+.timeline-container::before { content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--purple, #a855f7), transparent); border-radius: 5px; opacity: 0.5; }
+
+.timeline-box { 
+    position: relative; background: rgba(15, 10, 25, 0.7); border: 1px solid rgba(192, 132, 252, 0.2); border-radius: 20px; padding: 30px; margin-bottom: 40px; backdrop-filter: blur(10px); 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+.timeline-box:hover { border-color: var(--purple, #a855f7); transform: translateX(10px); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15); }
+
+/* Timeline Icons (Left Side) */
+.icon-block { 
+    position: absolute; left: -75px; top: 20px; width: 50px; height: 50px; border-radius: 15px; display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: bold; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 2; transition: transform 0.3s ease; 
+    animation: floatAnim 3.5s ease-in-out infinite; 
+}
+.start-icon { background: linear-gradient(135deg, #e11d48, #9f1239); }
+.growth-icon { background: linear-gradient(135deg, #a855f7, #6b21a8); }
+.crown-icon { background: linear-gradient(135deg, #fbbf24, #d97706); }
+.timeline-box:hover .icon-block { transform: scale(1.15) rotate(5deg); }
+
+.date-badge { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; color: var(--yellow, #fbbf24); letter-spacing: 2px; margin-bottom: 15px; }
+.box-title { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 10px; letter-spacing: 1px; }
+.box-desc { font-size: 15px; color: #a1a1aa; line-height: 1.6; }
+
+/* OUR VIBE CARDS (Family Focus) */
+.vibe-section { max-width: 1100px; margin: 0 auto 100px auto; padding: 0 5%; }
+.vibe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.vibe-card { 
+    background: linear-gradient(180deg, rgba(20, 15, 30, 0.8) 0%, rgba(5, 5, 10, 0.9) 100%); border: 1px solid rgba(192, 132, 252, 0.15); border-radius: 20px; padding: 40px 30px; position: relative; overflow: hidden; 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+.vibe-card:hover { border-color: rgba(168, 85, 247, 0.8); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(168, 85, 247, 0.2); }
+
+.vibe-icon { 
+    font-size: 40px; margin-bottom: 20px; transition: transform 0.4s ease; 
+    animation: floatAnim 4s ease-in-out infinite; 
+    animation-delay: 1s; 
+}
+.vibe-card:hover .vibe-icon { transform: scale(1.2) translateY(-5px); }
+.vibe-title { font-size: 20px; color: #fff; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+.vibe-desc { font-size: 14px; color: #a1a1aa; line-height: 1.7; margin-bottom: 25px; min-height: 70px; }
+
+.vibe-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.vibe-tags span { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: var(--purple, #a855f7); font-size: 10px; font-weight: 800; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.vibe-card:hover .vibe-tags span { background: rgba(168, 85, 247, 0.15); border-color: var(--purple, #a855f7); color: #fff; }
+
+/* BATTLE STATION SETUP */
+.setup-section { max-width: 1000px; margin: 0 auto 100px auto; padding: 0 5%; text-align: center; }
+.setup-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+.setup-item { 
+    background: rgba(10, 8, 15, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 30px 20px; min-width: 200px; flex: 1; max-width: 250px; 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+.setup-item:hover { border-color: var(--yellow, #fbbf24); background: rgba(251, 191, 36, 0.05); }
+
+.setup-icon { 
+    font-size: 35px; margin-bottom: 15px; filter: grayscale(100%); transition: all 0.3s ease; 
+    animation: floatAnim 3.5s ease-in-out infinite;
+}
+.setup-item:hover .setup-icon { filter: grayscale(0%); transform: scale(1.2); }
+.setup-item h4 { color: #fff; font-size: 16px; font-weight: 800; margin-bottom: 5px; text-transform: uppercase; }
+.setup-item p { color: #71717a; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* CALL TO ACTION BOTTOM */
+.cta-section { text-align: center; padding: 80px 5%; background: linear-gradient(0deg, rgba(168, 85, 247, 0.05) 0%, transparent 100%); border-top: 1px solid rgba(192, 132, 252, 0.1); margin-bottom: 0; }
+.cta-title { font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: #fff; letter-spacing: 2px; margin-bottom: 15px; }
+.cta-desc { color: #a1a1aa; font-size: 16px; margin-bottom: 40px; }
+.cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.cta-btn { 
+    padding: 16px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; text-decoration: none; letter-spacing: 1.5px; display: inline-flex; align-items: center; justify-content: center; 
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, background 0.3s ease;
+    will-change: transform;
+}
+.discord-btn { background: #5865F2; color: white; box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3); }
+.discord-btn:hover { background: #4752C4; box-shadow: 0 15px 30px rgba(88, 101, 242, 0.6); }
+.yt-btn { background: transparent; border: 2px solid #e11d48; color: #e11d48; }
+.yt-btn:hover { background: #e11d48; color: white; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.4); }
+
+/* GLOBAL FLOATING ANIMATION KEYFRAMES */
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
+    50% { transform: translateY(-12px); filter: drop-shadow(0 10px 15px rgba(168, 85, 247, 0.5)); }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .timeline-container { padding-left: 40px; }
+    .timeline-container::before { left: 14px; }
+    .icon-block { left: -55px; width: 40px; height: 40px; font-size: 18px; top: 25px; }
+    .timeline-box { padding: 25px 20px; }
+    .setup-grid { flex-direction: column; align-items: center; }
+    .setup-item { width: 100%; max-width: 300px; }
+    .cta-buttons { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+}
